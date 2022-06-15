@@ -1,0 +1,4 @@
+- hosts: node1
+  remote_user: root
+  roles:
+  - install_lnmp

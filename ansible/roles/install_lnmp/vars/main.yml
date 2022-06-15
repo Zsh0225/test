@@ -1,0 +1,4 @@
+packages:
+- nginx
+- php-fpm
+- mariadb-server

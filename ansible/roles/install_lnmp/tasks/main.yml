@@ -1,0 +1,15 @@
+- name: install {{ packages }}
+  yum: name={{ packages }} state=installed
+- name: nginx template
+  template: src=nginx.conf dest=/etc/nginx.conf
+  notify: restart nginx
+- name: create data dir
+  shell: mkdir -p /data/html
+- name: php_test page
+  copy: src=phptest.php dest=/data/html
+- name: start service
+  systemd: name={{ item }} state=started
+  with_items:
+  - nginx
+  - mariadb
+  - php-fpm
